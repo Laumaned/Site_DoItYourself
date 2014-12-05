@@ -14,9 +14,6 @@
 </div>
 <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCntQpRLDDFDE2xOnOr5pJLzaTdhDGiOoE"></script>
 <script src="/js/Map.js"></script>
-<script src="/js/Map.pref.js"></script>
-<script src="/js/Map.icon.js"></script>
-<script src="/js/Ressource.js"></script>
 <!-- if embdded 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="/js/restable.js"></script>
@@ -25,8 +22,6 @@
 <!-- if embdded -->
 <script>
 document.body.onload=(function(){
-	$('#intern').restable(Ressource.table('carte'));
-	$('#extern').restable(Ressource.table('carte_ext'));
 	Map.init();
 });
 </script>

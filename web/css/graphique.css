@@ -17,3 +17,10 @@ div#chart{
     display: block;
     background: #eee;
 }
+
+div#type-graphe{
+float: left;
+}
+div.dropdown{
+ float: right;   
+}

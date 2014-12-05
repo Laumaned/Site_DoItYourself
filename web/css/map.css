@@ -2,7 +2,7 @@
 #titlebar,.footer{display:none;}
 /* make the navbar translucid */
 .header{
-	background-color:rgba(152,132,82,0.85);
+	opacity:.90;
 	position: fixed;
 	width: 100%;
 }

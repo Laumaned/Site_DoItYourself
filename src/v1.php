@@ -88,22 +88,24 @@ function get_default(){
 		
 		$tables=explode('-',$p[1]);
 		$sql=count($_GET)?"WHERE ":"";
-		for($i=0;$i<count($_GET['data']);$i++){
-			//get and sanitize input
-			$conj=$lo[isset($_GET['conj'])&&isset($_GET['conj'][$i])?$_GET['conj'][$i]:key($lo)];
-			$oper=$co[isset($_GET['oper'])&&isset($_GET['oper'][$i])?$_GET['oper'][$i]:key($co)];
-			$name=sane($_GET['name'][$i]);
-			$data=sane($_GET['data'][$i]);
-			//post treatement
-			if($oper=='LIKE' && strrchr($data ,'%')==FALSE)$data="%$data%";//add wildcards on LIKE requests if no % found
-			if($oper=='IN'  )$data="('".implode("','",explode(",",$data) ) ."')";//split IN values
-			else $data="\"$data\"";
-			//append to the global query
-			$sql.= ($i?$conj:'')." `".str_replace('.','`.`',$name)."` $oper $data \n";
-			if(strpos($name,'.')){//external table
-				$ext=explode('.',$name);
-				array_push($tables,$ext[0]);//add to the FROM
-				get_join($ext[0],$tables[0],$sql,$tables);
+		if(isset($_GET['data'])){
+			for($i=0;$i<count($_GET['data']);$i++){
+				//get and sanitize input
+				$conj=$lo[isset($_GET['conj'])&&isset($_GET['conj'][$i])?$_GET['conj'][$i]:key($lo)];
+				$oper=$co[isset($_GET['oper'])&&isset($_GET['oper'][$i])?$_GET['oper'][$i]:key($co)];
+				$name=sane($_GET['name'][$i]);
+				$data=sane($_GET['data'][$i]);
+				//post treatement
+				if($oper=='LIKE' && strrchr($data ,'%')==FALSE)$data="%$data%";//add wildcards on LIKE requests if no % found
+				if($oper=='IN'  )$data="('".implode("','",explode(",",$data) ) ."')";//split IN values
+				else $data="\"$data\"";
+				//append to the global query
+				$sql.= ($i?$conj:'')." `".str_replace('.','`.`',$name)."` $oper $data \n";
+				if(strpos($name,'.')){//external table
+					$ext=explode('.',$name);
+					array_push($tables,$ext[0]);//add to the FROM
+					get_join($ext[0],$tables[0],$sql,$tables);
+				}
 			}
 		}
 		return print(/**/DB_json('SELECT '.$tables[0].'.* FROM '.implode(array_unique($tables),',').' '.$sql));

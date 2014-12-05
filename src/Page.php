@@ -57,15 +57,16 @@ function get_default($ctrl="Page",$page='Accueil.md'){
 				}
 			?></div>
 		<?if(!isset($_GET['full'])){?>
-		<div class="footer hidden-xs">
+		<div class="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-3"><a href="/Page/Projets/Modelespace/Liens.html"><img src="/img/logo.png"></a></div>
 					<div class="col-sm-5">
 						<address>
 						Humanitaria Group<br>
-						Complexe de rangueuil<br>
-						32, allées des sciences 312000 TOULOUSE Cedex 9<br>
+						Complexe de Rangueil<br>
+						32, allées des sciences<br/>
+						31200 TOULOUSE Cedex 9<br>
 						</address>
 					</div>
 					<div class="col-sm-4">
