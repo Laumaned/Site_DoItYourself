@@ -58,7 +58,7 @@ $(document).ready(function(){
                 });
             }
         }
-        else{
+        else if(n==2){
             $.getJSON("/v1/ville/id_pays",function(camps){
 
                 camps.forEach(function(camp){
@@ -67,19 +67,25 @@ $(document).ready(function(){
                 });
             });
         }
+        else{
+            valeur = [10,5,2,88,9,74,55,25];
+            legende = ["T1","T2","T3","T4","T5","T6","T7","T8"];
+        }
         
     }
+    
+    
     function genererGraphe(){
     
+        $("div#chart").children().remove();
     // vider les tableaux
         var i=0;
         for(;i<valeur.length;i++)
             valeur.pop();
-        for(;i<legende.length;i++)
+        for(i=0;i<legende.length;i++)
             legende.pop();
-        for(;i<tmp.length;i++)
+        for(i=0;i<tmp.length;i++)
             tmp.pop();
-    $("div#chart").children().remove();
         
     // Type CAMEMBERT
     if(type==1){

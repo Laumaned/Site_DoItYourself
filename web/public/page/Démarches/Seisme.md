@@ -1,0 +1,1 @@
+Pour se protéger des seismes :

@@ -1,0 +1,19 @@
+div#indicateur a{
+    
+    border:1px solid #eee;
+    margin-left: 5px;
+    font-size: 10pt;
+    padding: 5px;
+}
+
+div.graphique{
+    
+    display: block;
+    float:left;
+    font-size: 9pt;
+}
+
+div#chart{
+    display: block;
+    background: #eee;
+}
