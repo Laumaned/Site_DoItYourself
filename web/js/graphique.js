@@ -53,7 +53,7 @@ $(document).ready(function(){
                 console.log("kdk");
                  $.getJSON("/v1/ville/"+tmp[i],function(villes){
                         villes.forEach(function(ville){
-                            legende.push(ville.nom);
+                            legende.push(ville.nom_ville);
                         });
                 });
             }
